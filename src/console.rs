@@ -7,7 +7,9 @@ macro_rules! console_log {
 
 #[macro_export]
 macro_rules! log_js {
-    ($v:ident) => ($crate::console::log_js_value(&$v))
+    ($v:ident) => {
+        $crate::console::log_js_value(&$v)
+    };
 }
 
 #[wasm_bindgen]
