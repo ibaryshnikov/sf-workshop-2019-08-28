@@ -37,13 +37,13 @@ impl Bullet {
     }
     pub fn check_collision(&self, enemies: &mut [Enemy]) -> CollisionKind {
         // goes away from the field of view
-        if self.y + self.height < 0.0 {
+        if self.y + self.height / 2.0 < 0.0 {
             return CollisionKind::EndOfMap;
         }
         for enemy in enemies {
-            let intersect_x = (self.x - enemy.x).abs() < self.width / 2.0 + enemy.width / 2.0;
-            let intersect_y = (self.y - enemy.y).abs() < self.height / 2.0 + enemy.height / 2.0;
-            if intersect_x && intersect_y {
+            let intersects_x = (self.x - enemy.x).abs() < (self.width + enemy.width) / 2.0;
+            let intersects_y = (self.y - enemy.y).abs() < (self.height + enemy.height) / 2.0;
+            if intersects_x && intersects_y {
                 enemy.is_alive = false;
                 return CollisionKind::Hit;
             }

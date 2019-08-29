@@ -1,6 +1,13 @@
-import init, { answer } from './pkg/shooter.js';
+import init, { SceneContainer } from './pkg/shooter.js';
 
 window.addEventListener('load', async () => {
     await init();
-    console.log('the answer is', answer());
+    const container = new SceneContainer();
+
+    function draw() {
+        requestAnimationFrame(draw);
+        container.updateState();
+        container.draw();
+    }
+    draw();
 });

@@ -28,6 +28,7 @@ impl Enemy {
 }
 
 pub fn get_initial_enemies() -> Vec<Enemy> {
+    #[rustfmt::skip]
     let positions = vec![
         (140, 60), (180, 60), (220, 60), (260, 60),
         (160, 140), (200, 140), (240, 140),

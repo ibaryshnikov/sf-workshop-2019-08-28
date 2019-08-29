@@ -10,11 +10,10 @@ pub struct Ship {
     pub direction: i8,
     speed: f64,
     scene_width: f64,
-    scene_height: f64,
 }
 
 impl Ship {
-    pub fn new(x: f64, scene_width: f64, scene_height: f64) -> Self {
+    pub fn new(x: f64, scene_width: f64) -> Self {
         Self {
             x,
             y: 380.0,
@@ -23,7 +22,6 @@ impl Ship {
             direction: 0,
             speed: 0.2,
             scene_width,
-            scene_height,
         }
     }
 
