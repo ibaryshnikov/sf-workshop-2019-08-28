@@ -5,8 +5,7 @@ Let's build a 2d shooter using canvas, wasm-bindgen and wasm-pack
 ## Environment setup
 
 ```bash
-cargo install wasm-bindgen-cli --version 0.2.50
-cargo install wasm-pack --version 0.8.1
+cargo install wasm-bindgen-cli --version 0.2.83
 # optionally, https static server
 cargo install https
 ```
@@ -14,7 +13,8 @@ cargo install https
 ## Building
 
 ```bash
-wasm-pack build --target web
+cargo build --release --target wasm32-unknown-unknown
+wasm-bindgen --out-dir pkg --target web ./target/wasm32-unknown-unknown/release/shooter.wasm
 ```
 
 ## Running

@@ -32,6 +32,7 @@ pub struct Scene {
     ctx: CanvasRenderingContext2d,
     callbacks: Callbacks,
     ship: Ship,
+    last_bullet_fired: f64,
     bullets: Vec<Bullet>,
     enemies: Vec<Enemy>,
     last_updated: f64,
@@ -69,6 +70,7 @@ impl Scene {
             ctx,
             callbacks: Callbacks::default(),
             ship: Ship::new(200.0, f64::from(width)),
+            last_bullet_fired: 0.0,
             bullets: vec![],
             enemies: get_initial_enemies(),
             last_updated: 0.0,
@@ -123,6 +125,12 @@ impl Scene {
     }
 
     fn fire_bullet(&mut self) {
+        let now = Date::now();
+        let diff = now - self.last_bullet_fired;
+        if diff.abs() < 300.0 {
+            return;
+        }
+        self.last_bullet_fired = now;
         self.bullets.push(self.ship.fire_bullet());
     }
 

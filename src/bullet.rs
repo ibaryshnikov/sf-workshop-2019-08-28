@@ -2,7 +2,7 @@ use web_sys::CanvasRenderingContext2d;
 
 use crate::enemy::Enemy;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum CollisionKind {
     NotYet,
     EndOfMap,
